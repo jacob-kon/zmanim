@@ -8,12 +8,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>zmanim checker</h1><br>
+    <h1 id="heading">zmanim checker</h1>
+    <h1 class="error"></h1>
     <h3>Please enter the zip for the zmanim checker</h3>
-
     <input  class="zip" type="number" placeholder="zip" value="">
-    <br><br>
-    <button class="findZman">Click to check Zmanim</button>
+    <button class="findZman">Find Zmanim</button>
+    <h3>Location: <span id="location"></span></h3>
+    <h3>Sunrise: <span id="sunrise"></span></h3>
+    <h3>Sunset <span id="sunset"></span></h3>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js" integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="app.js"></script>
 </body>
