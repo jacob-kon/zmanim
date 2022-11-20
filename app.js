@@ -4,6 +4,12 @@ let errorMessage = document.querySelector(".error")
 let loc =document.querySelector("#location")
 let sunrise =document.querySelector("#sunrise")
 let sunset =document.querySelector("#sunset")
+let alotHaShachar=document.querySelector("#alotHaShachar")
+let misheyakir= document.querySelector("#misheyakir")
+let sofZmanShma= document.querySelector("#sofZmanShma")
+let sofZmanShmaMGA=document.querySelector("#sofZmanShmaMGA")
+let sofZmanTfilla=document.querySelector("#sofZmanTfilla")
+let sofZmanTfillaMGA=document.querySelector("#sofZmanTfillaMGA")
 let validZip =false
 
  //function to clear all feilds
@@ -13,42 +19,55 @@ let validZip =false
   sunset.innerText=""
  }
 
-//function to get zmanim with axios using user proided zip
+//function to get zmanim (times) with axios using users zip
 let zmanChecker = async(zipCode)=>{
   let todaysDate =new Date();
   let d = todaysDate.toISOString().slice(0,10);
+  console.log('todaysDate',todaysDate)
+  console.log('d',d)
   try{
-      let response = await axios.get(`https://www.hebcal.com/zmanim?cfg=json&zip=${zipCode}&date=${d}`)
+      let response = await axios.get(`https://www.hebcal.com/zmanim?cfg=json&zip=${zipCode}&date=${d}&sec=1`)
       console.log(response.data)
       loc.innerText=response.data.location.title
-      sunrise.innerText=response.data.times.sunrise
-      sunset.innerText=response.data.times.sunset
-      console.log()
-      console.log('**************************')
+      
+      alotHaShachar.innerText=`${response.data.times.alotHaShachar.slice(11,19)} AM`
+      misheyakir.innerText=`${response.data.times.misheyakir.slice(11,19)} AM`
+      sunrise.innerText=`${response.data.times.sunrise.slice(11,19)} AM`
+      sofZmanShema.innerText=`${response.data.times.sofZmanShma.slice(11,19)} AM`
+      sofZmanShemaMGA.innerText=`${response.data.times.sofZmanShmaMGA.slice(11,19)} AM`
+      sofZmanTfilla.innerText=`${response.data.times.sofZmanTfilla.slice(11,19)} AM`
+      sofZmanTfillaMGA.innerText=`${response.data.times.sofZmanTfillaMGA.slice(11,19)} AM`
+      sunset.innerText=`${response.data.times.sunset.slice(11,19)} PM`
+
+      // tzeit42min
+      // tzeit50min
+      // tzeit72min
+
+
       console.log(response.data.times)
 
   }
   catch(error){
-      console.error('error cought by me',error);
-      errorMessage.innerText ="please enter a valid zipcode"
+      console.error('error cought by me in axios api',error);
+      heading.innerText ="Zip not found please try again!!!"
       setTimeout(()=>{
-        errorMessage.innerText =""
-      },5000)
+        heading.innerText ="Zmanim Checker"
+      },2000)
       
   }
  };
 
-
- function zipValidator(zip){ //checks for exactly five digits in user zip
+  function zipValidator(zip){ //checks for exactly five digits in user zip
     if(/^\d{5}$/.test(zip)){
-      console.log('thanks that is a valid zip')
+      // console.log('thanks that is a valid zip')
       return validZip = true
 
     }else{
-      console.log('pleses enter valid zip')
-      errorMessage.innerText ="please enter a valid zipcode"
+      console.log('pleses enter valid zip: caught by zip validator')
+      heading.innerText ="Please enter a valid zipcode!!!"
+
       setTimeout(()=>{
-        errorMessage.innerText =""
+        heading.innerText ="Zmanim Checker"
       },2000)
       return validZip = false
     }
