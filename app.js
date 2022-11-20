@@ -10,6 +10,8 @@ let sofZmanShma= document.querySelector("#sofZmanShma")
 let sofZmanShmaMGA=document.querySelector("#sofZmanShmaMGA")
 let sofZmanTfilla=document.querySelector("#sofZmanTfilla")
 let sofZmanTfillaMGA=document.querySelector("#sofZmanTfillaMGA")
+let night42Min=document.querySelector("#night42Min")
+let night50Min=document.querySelector("#night50Min")
 let validZip =false
 
  //function to clear all feilds
@@ -18,6 +20,11 @@ let validZip =false
   sunrise.innerText=""
   sunset.innerText=""
  }
+
+ function ChangeMilitaryTime(MilitaryTime){
+  let regularHours =  (Number(MilitaryTime.slice(0,2))%12).toString()
+  return MilitaryTime.replace(/../,regularHours)
+}
 
 //function to get zmanim (times) with axios using users zip
 let zmanChecker = async(zipCode)=>{
@@ -37,13 +44,11 @@ let zmanChecker = async(zipCode)=>{
       sofZmanShemaMGA.innerText=`${response.data.times.sofZmanShmaMGA.slice(11,19)} AM`
       sofZmanTfilla.innerText=`${response.data.times.sofZmanTfilla.slice(11,19)} AM`
       sofZmanTfillaMGA.innerText=`${response.data.times.sofZmanTfillaMGA.slice(11,19)} AM`
-      sunset.innerText=`${response.data.times.sunset.slice(11,19)} PM`
-
-      // tzeit42min
-      // tzeit50min
-      // tzeit72min
-
-
+      sunset.innerText=ChangeMilitaryTime(`${response.data.times.sunset.slice(11,19)} PM`)
+      night42Min.innerText=ChangeMilitaryTime(`${response.data.times.tzeit42min.slice(11,19)} PM`) 
+      night50Min.innerText=ChangeMilitaryTime(`${response.data.times.tzeit50min.slice(11,19)} PM`) 
+      night72Min.innerText=ChangeMilitaryTime(`${response.data.times.tzeit72min.slice(11,19)} PM`)
+     
       console.log(response.data.times)
 
   }

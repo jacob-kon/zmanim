@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <h1 id="heading">Zmanim Checker</h1>
-        <h2 id="location"></h2>
+        <h3 id="location"></h3>
         <input  class="zip" type="number" placeholder="zip" value="">
         <button class="findZman btn btn-primary">Find Zmanim</button>
         <hr>
@@ -40,9 +40,9 @@
               <div class="col-sm-6 col-md-7" id="sunrise" >
               </div>
             </div>
-           <div class="row">
+           <div class="row noBackground">
               <div class="col-sm-6 col-md-5">
-                SofZmanShemaMGA
+                SofZmanShema-MGA
               </div>
               <div class="col-sm-6 col-md-7" id="sofZmanShemaMGA">
               </div>
@@ -54,9 +54,9 @@
               <div class="col-sm-6 col-md-7" id="sofZmanShema">
               </div>
             </div>
-            <div class="row">
+            <div class="row noBackground">
               <div class="col-sm-6 col-md-5">
-                SofZmanTfillaMGA
+                SofZmanTfilla-MGA
               </div>
               <div class="col-sm-6 col-md-7 " id="sofZmanTfillaMGA">
               </div>
@@ -68,11 +68,32 @@
               <div class="col-sm-6 col-md-7" id="sofZmanTfilla">
               </div>
             </div>
-            <div class="row">
+            <div class="row noBackground">
               <div class="col-sm-6 col-md-5">
                 Sunset
               </div>
               <div class="col-sm-6 col-md-7" id="sunset">
+              </div>
+            </div>
+            <div class="row whiteBackground">
+              <div class="col-sm-6 col-md-5">
+                Night42Min
+              </div>
+              <div class="col-sm-6 col-md-7" id="night42Min">
+              </div>
+            </div>
+            <div class="row noBackground">
+              <div class="col-sm-6 col-md-5">
+                Night50Min
+              </div>
+              <div class="col-sm-6 col-md-7" id="night50Min">
+              </div>
+            </div>
+            <div class="row whiteBackground">
+              <div class="col-sm-6 col-md-5">
+                Night72Min
+              </div>
+              <div class="col-sm-6 col-md-7" id="night72Min">
               </div>
             </div>
            
@@ -89,3 +110,5 @@
     <script src="app.js"></script>
 </body>
 </html>
+
+<!-- need to add fields of nightfall and a weather api  and change military time to standard time on PM times-->
