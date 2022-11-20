@@ -26,12 +26,11 @@ h2{
 .location1{
     margin-top: 20px;
     background:rgba(255,255,255,.2);
-    width: 60%;
 }
 .whiteBackground{
     background:rgba(255,255,255,.2);
-    width: 60%;
 }
+
 .zip{
     padding: 5px;
     border-radius: 10px;
